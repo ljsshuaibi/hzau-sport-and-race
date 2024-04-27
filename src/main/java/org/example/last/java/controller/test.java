@@ -1,10 +1,7 @@
 
 package org.example.last.java.controller;
 import org.example.last.java.entity.*;
-import org.example.last.java.service.impl.AdminServiceimpl;
-import org.example.last.java.service.impl.EmployeeServiceImpl;
-import org.example.last.java.service.impl.SportServiceimpl;
-import org.example.last.java.service.impl.UserBookMessageimpl;
+import org.example.last.java.service.impl.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import java.util.ArrayList;
@@ -21,6 +18,8 @@ public class test {
     UserBookMessageimpl userBookMessageimpl;
     @Autowired
     AdminServiceimpl adminServiceimpl;
+    @Autowired
+    RaceService raceService;
     @CrossOrigin(origins = "http://localhost:8080")
     @PostMapping("/userInfo")
     public int login(@RequestBody Employee employeeDTO) {
@@ -127,5 +126,10 @@ public class test {
     public int deleteDateMessage(){
         userBookMessageimpl.deleteDataMessage();
         return 1;
+    }
+    @PostMapping("/userInfo/sport/Race")
+    public List<RaceLjs> SelectAllRace(){
+        List<RaceLjs> ljs= raceService.SelectRace();
+        return ljs;
     }
 }
