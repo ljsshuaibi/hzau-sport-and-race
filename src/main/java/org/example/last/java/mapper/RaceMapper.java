@@ -9,4 +9,6 @@ import java.util.List;
 public interface RaceMapper {
     @Select("select * from race")
     List<RaceLjs> SelectRace();
+    @Select("select * from race where Id=#{id}")
+     RaceLjs Select(int id);
 }

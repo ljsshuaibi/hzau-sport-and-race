@@ -3,14 +3,16 @@ package org.example.last.java.entity;
 import lombok.Data;
 
 import java.util.List;
+import java.util.concurrent.atomic.AtomicInteger;
 
 @Data
-public abstract class RaceLjs {
-    public int id;
-    public int status;
+public  class RaceLjs {
+    public int Id;
+    public int Status;
     public String RaceMessage;
     public String Time;
     public String Boss;
-
-    public abstract List<RaceLjs> SelectRace();
+    public String RaceName;
+    public int Number;
+    public int Total;
 }

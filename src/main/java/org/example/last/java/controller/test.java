@@ -132,4 +132,12 @@ public class test {
         List<RaceLjs> ljs= raceService.SelectRace();
         return ljs;
     }
+    @PostMapping("/userInfo/sport/Race/BaoMing")
+    public int RacerBaoming(@RequestBody RacerMessage racerMessage){
+        System.out.println(racerMessage);
+        int RaceId=racerMessage.eventId;
+        String UserId=racerMessage.userId;
+        raceService.BaoMing(UserId,RaceId);
+        return 1;
+    }
 }

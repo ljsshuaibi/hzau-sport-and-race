@@ -1,11 +1,12 @@
 package org.example.last.java.entity;
 
 import lombok.Data;
-import org.springframework.stereotype.Component;
 
 @Data
-public class Employee {
+public class EmployeeDto {
+    public String USerId;
     public String username;
+    public String UserMessage;
+    public int age;
     public String password;
-
 }
