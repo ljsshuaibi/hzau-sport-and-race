@@ -7,4 +7,5 @@ import lombok.Data;
 public class RacerMessage {
     public int eventId;
     public String userId;
+    public String RaceName;
 }

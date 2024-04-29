@@ -2,6 +2,7 @@ package org.example.last.java.service.impl;
 
 import org.example.last.java.entity.EmployeeDto;
 import org.example.last.java.entity.RacerBaoMing;
+import org.example.last.java.entity.RacerMessage;
 import org.example.last.java.mapper.EmployeeMapper;
 import org.example.last.java.mapper.RaceBaomingMapper;
 import org.example.last.java.mapper.RaceMapper;
@@ -32,10 +33,24 @@ public class RaceService implements RaceLjs1, RaceLjs2 {
     public void BaoMing(String userid,int raceid) {
         EmployeeDto employeeDto=employeeMapper.selectRacer(userid);
         RaceLjs raceLjs=raceMapper.Select(raceid);
-        RacerBaoMing racerBaoMing=new RacerBaoMing(employeeDto);
+        RacerBaoMing racerBaoMing=new RacerBaoMing();
+        racerBaoMing.UserId=employeeDto.username;
+        racerBaoMing.UserName=employeeDto.USerId;
+        racerBaoMing.UserMessage=employeeDto.UserMessage;
         racerBaoMing.RaceTime=raceLjs.Time;
         racerBaoMing.RaceName=raceLjs.RaceName;
         raceBaomingMapper.InsertRacer(racerBaoMing);
         raceBaomingMapper.InsertPeople(raceid);
+    }
+    @Override
+    public List<RacerBaoMing> ShowRacerMessage(String UserId){
+        System.out.println(UserId);
+        List<RacerBaoMing> racerMessages=new ArrayList<>();
+        racerMessages=raceBaomingMapper.SelectRaceMessage(UserId);
+        return racerMessages;
+    }
+    @Override
+    public void QuxiaoBaoMing(RacerMessage racerMessage){
+        raceBaomingMapper.QuxaioBaoming(racerMessage);
     }
 }

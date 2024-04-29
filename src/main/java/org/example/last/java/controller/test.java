@@ -140,4 +140,19 @@ public class test {
         raceService.BaoMing(UserId,RaceId);
         return 1;
     }
+    @PostMapping("/person")
+    public RacerBaoMing PersonSelect(@RequestBody RacerMessage racerMessage1){
+        String UserId=racerMessage1.getUserId();
+        System.out.println(UserId);
+        List<RacerBaoMing> ljs=raceService.ShowRacerMessage(UserId);
+        RacerBaoMing racerBaoMing=ljs.get(0);
+        System.out.println(ljs);
+        return racerBaoMing;
+    }
+    @PostMapping("/userInfo/sport/Race/QuXiaoBaoMing")
+    public int QuxiaoBaoMing(@RequestBody RacerMessage racerMessage){
+        System.out.println(racerMessage);
+        raceService.QuxiaoBaoMing(racerMessage);
+        return 1;
+    }
 }

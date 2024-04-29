@@ -9,9 +9,5 @@ public class RacerBaoMing {
     public String UserMessage;
     public String RaceTime;
     public String RaceName;
-    public  RacerBaoMing(EmployeeDto employeeDto){
-        this.UserId=employeeDto.username;
-        this.UserName=employeeDto.USerId;
-        this.UserMessage=employeeDto.UserMessage;
-    }
+
 }
