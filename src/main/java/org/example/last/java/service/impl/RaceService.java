@@ -1,8 +1,6 @@
 package org.example.last.java.service.impl;
 
-import org.example.last.java.entity.EmployeeDto;
-import org.example.last.java.entity.RacerBaoMing;
-import org.example.last.java.entity.RacerMessage;
+import org.example.last.java.entity.*;
 import org.example.last.java.mapper.EmployeeMapper;
 import org.example.last.java.mapper.RaceBaomingMapper;
 import org.example.last.java.mapper.RaceMapper;
@@ -10,7 +8,6 @@ import org.example.last.java.service.RaceLjs1;
 import org.example.last.java.service.RaceLjs2;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.example.last.java.entity.RaceLjs;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -52,5 +49,24 @@ public class RaceService implements RaceLjs1, RaceLjs2 {
     @Override
     public void QuxiaoBaoMing(RacerMessage racerMessage){
         raceBaomingMapper.QuxaioBaoming(racerMessage);
+        String id=racerMessage.RaceName;
+        raceBaomingMapper.DeletePeople(id);
+    }
+    public void insertRace(RaceLjs raceLjs){
+        raceMapper.InsertRace(raceLjs);
+    }
+    public void deleteRace(RaceLjs raceLjs){
+        raceMapper.deleteRace(raceLjs);
+    }
+    public void updateRace(RaceLjs raceLjs){
+        raceMapper.updateRace(raceLjs);
+    }
+    @Override
+    public void UpdateRaceResult(ResultRace resultRace){
+        raceMapper.InsertRaceResult(resultRace);
+    }
+    @Override
+    public ResultRace SelectRaceResult(String name){
+        return raceMapper.SelectRaceResult(name);
     }
 }

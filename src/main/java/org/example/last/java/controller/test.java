@@ -1,5 +1,7 @@
 
 package org.example.last.java.controller;
+import io.swagger.annotations.Api;
+import lombok.extern.slf4j.Slf4j;
 import org.example.last.java.entity.*;
 import org.example.last.java.service.impl.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,7 +10,8 @@ import java.util.ArrayList;
 import java.util.List;
 @RestController
 @RequestMapping("api")
-
+@Slf4j
+@Api(tags = "员工相关接口")
 public class test {
     @Autowired
     EmployeeServiceImpl employeeService;
@@ -20,7 +23,7 @@ public class test {
     AdminServiceimpl adminServiceimpl;
     @Autowired
     RaceService raceService;
-    @CrossOrigin(origins = "http://localhost:8080")
+    @CrossOrigin(origins = "http://localhost:8081")
     @PostMapping("/userInfo")
     public int login(@RequestBody Employee employeeDTO) {
         String password = employeeDTO.getPassword();
@@ -35,6 +38,7 @@ public class test {
         }
         return 0;
     }
+
     @PostMapping("/userInfo/ppq")
     public List<SportDto> getsport(){
         System.out.println("success");
@@ -123,8 +127,9 @@ public class test {
         return ljs;
     }
     @PostMapping("/admin/delete")
-    public int deleteDateMessage(){
-        userBookMessageimpl.deleteDataMessage();
+    public int deleteSportDateMessage(@RequestBody MessageDto messageDto){
+        System.out.println(messageDto);
+        userBookMessageimpl.deleteDataMessage(messageDto);
         return 1;
     }
     @PostMapping("/userInfo/sport/Race")
@@ -143,16 +148,60 @@ public class test {
     @PostMapping("/person")
     public RacerBaoMing PersonSelect(@RequestBody RacerMessage racerMessage1){
         String UserId=racerMessage1.getUserId();
-        System.out.println(UserId);
         List<RacerBaoMing> ljs=raceService.ShowRacerMessage(UserId);
         RacerBaoMing racerBaoMing=ljs.get(0);
-        System.out.println(ljs);
         return racerBaoMing;
     }
     @PostMapping("/userInfo/sport/Race/QuXiaoBaoMing")
     public int QuxiaoBaoMing(@RequestBody RacerMessage racerMessage){
-        System.out.println(racerMessage);
+        System.out.println("quxiao"+racerMessage);
         raceService.QuxiaoBaoMing(racerMessage);
         return 1;
     }
+    @PostMapping("/person/race")
+    public List<RacerBaoMing> RacerBaoingSelect(@RequestBody RacerMessage racerMessage1 ){
+        String UserId=racerMessage1.getUserId();
+        System.out.println(UserId+"success");
+        List<RacerBaoMing> ljs=raceService.ShowRacerMessage(UserId);
+        return ljs;
+    }
+    @PostMapping("/admin/insert/race")
+    public int InsertRace(@RequestBody RaceLjs raceLjs){
+        System.out.println(raceLjs);
+        raceService.insertRace(raceLjs);
+        return 1;
+    }
+    @PostMapping("/admin/delete/race")
+    public int DeleteRace(@RequestBody RaceLjs raceLjs){
+        raceService.deleteRace(raceLjs);
+        return 1;
+    }
+    @PostMapping("/admin/update/race")
+        public int UpdateRace(@RequestBody RaceLjs raceLjs){
+        System.out.println(raceLjs);
+        raceService.updateRace(raceLjs);
+        return 1;
+    }
+    @PostMapping("/adminInfo/enableColumn/ppq")
+    public void UpdateSportppq1(@RequestBody AdminSport adminSport){
+        sportServiceimpl.AdminPpq1(Integer.parseInt(adminSport.getFiledId()));
+    }
+    @PostMapping("/adminInfo/disenableColumn/ppq")
+    public void UpdateSportppq2(@RequestBody AdminSport adminSport){
+        sportServiceimpl.AdminPpq2(Integer.parseInt(adminSport.getFiledId()));
+    }
+    @PostMapping("/adminInfo/race/result")
+    public void ResultRace(@RequestBody ResultRace resultRace){
+        System.out.println(resultRace);
+       raceService.UpdateRaceResult(resultRace);
+    }
+    @PostMapping("/UserInfo/race/results")
+    public ResultRace ResultRaceSelect(@RequestBody ResultRace resultRace){
+        String RaceName=resultRace.getRaceName();
+        System.out.println(resultRace);
+        ResultRace lsj= raceService.SelectRaceResult(RaceName);
+        System.out.println(lsj);
+        return lsj;
+    }
+
 }

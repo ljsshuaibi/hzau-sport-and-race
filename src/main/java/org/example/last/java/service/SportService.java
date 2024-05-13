@@ -11,6 +11,7 @@ public interface SportService {
     List<SportDto> SelectAllwq();
     int UpdateSportymq(int id,int time);
     int CancleUpdateSportymq(int id,int time);
+    int AdminPpq1(int id);
 
     public int UpdateSportppq(int id, int time);
 

@@ -166,6 +166,10 @@ public interface SportMapper {
     @Update("update wq set time12=0 where id=#{id}")
     int CancleUpdateSport12w(int id);
 
+    @Update("update ppq set status=1 where id=#{id}")
+    int AdminUpdateSportppq1(int id);
+    @Update("update ppq set status=0 where id=#{id}")
+    int AdminUpdateSportppq2(int id);
 
 }
 

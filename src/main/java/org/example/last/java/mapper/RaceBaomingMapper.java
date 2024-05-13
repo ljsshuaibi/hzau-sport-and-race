@@ -14,6 +14,8 @@ public interface RaceBaomingMapper {
     void InsertRacer(RacerBaoMing racerBaoMing);
     @Update("update race set Total=Total+1 where Id=#{id}")
     void InsertPeople(int id);
+    @Update("update race set Total=Total-1 where RaceName=#{RaceName}")
+    void DeletePeople(String RaceName);
     @Select("select * from racermessage where UserId=#{UserId}")
     List<RacerBaoMing> SelectRaceMessage(String UserId);
     @Delete("delete from racermessage where UserId=#{userId} and RaceName=#{RaceName}")

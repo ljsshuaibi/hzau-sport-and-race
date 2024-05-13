@@ -364,5 +364,19 @@ public class SportServiceimpl implements SportService {
         }
 
     }
+    @Override
+    public int AdminPpq1(int id)
+    {
+        synchronized (this) {
+            sportMapper.AdminUpdateSportppq1(id);
+        }
+        return 1;
+    }
+    public int AdminPpq2(int id){
+        synchronized (this) {
+            sportMapper.AdminUpdateSportppq2(id);
+        }
+        return 1;
+    }
 
 }

@@ -22,6 +22,7 @@ public interface UserBookMessageMapper {
     /*管理员根据名字查询预约*/
     @Select("select * from userbookmessage where Userid=#{UserId}")
     List<MessageDto> AdminSelect(String UserId);
-    @Delete("truncate table userbookmessage")
-    void delete();
+    /*qu xiao changdi yuyue*/
+    @Delete("delete from userbookmessage where Userid=#{Userid} and SportId=#{SportId} and type=#{type} and time=#{time}")
+    void deleteMessage(MessageDto messageDto);
 }

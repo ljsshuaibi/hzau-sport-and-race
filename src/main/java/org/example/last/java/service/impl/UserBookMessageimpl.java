@@ -32,7 +32,7 @@ public class UserBookMessageimpl implements org.example.last.java.service.UserBo
         return ljs;
     }
     @Override
-    public void deleteDataMessage(){
-        userBookMessageMapper.delete();
+    public void deleteDataMessage(MessageDto messageDto){
+            userBookMessageMapper.deleteMessage(messageDto);
     }
 }
