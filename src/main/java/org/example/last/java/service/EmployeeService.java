@@ -9,4 +9,7 @@ public interface EmployeeService {
 
     Employee login(Employee employeeDTO);
 
+
+    void Punish(Employee employee);
+    void enable(Employee employee);
 }

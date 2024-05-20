@@ -4,5 +4,6 @@ import lombok.Data;
 
 @Data
 public class AdminSport {
-    public String filedId;
+    public int fieldId;
+    public String type;
 }

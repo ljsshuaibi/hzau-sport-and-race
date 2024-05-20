@@ -25,4 +25,6 @@ public interface UserBookMessageMapper {
     /*qu xiao changdi yuyue*/
     @Delete("delete from userbookmessage where Userid=#{Userid} and SportId=#{SportId} and type=#{type} and time=#{time}")
     void deleteMessage(MessageDto messageDto);
+
+
 }

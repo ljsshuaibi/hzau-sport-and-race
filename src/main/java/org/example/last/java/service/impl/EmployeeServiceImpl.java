@@ -4,7 +4,9 @@ package org.example.last.java.service.impl;
 
 
 import org.example.last.java.entity.Employee;
+import org.example.last.java.entity.EmployeeDto;
 import org.example.last.java.entity.SportDto;
+import org.example.last.java.entity.Test;
 import org.example.last.java.mapper.EmployeeMapper;
 import org.example.last.java.mapper.SportMapper;
 import org.example.last.java.service.EmployeeService;
@@ -31,7 +33,17 @@ public class EmployeeServiceImpl implements EmployeeService {
         //3、返回实体对象
         return employee;
     }
+    public void Punish(Employee employee){
+        employeeMapper.UpdateStatus(employee);
+    }
+    public void enable(Employee employee){
+        employeeMapper.UpdateStatus1(employee);
+    }
 
 
+    public int SelectStatus(Test test){
+       EmployeeDto employee1= employeeMapper.SearchStatus(test);
+       return employee1.getStatus();
+    }
 
 }

@@ -9,4 +9,6 @@ public class EmployeeDto {
     public String UserMessage;
     public int age;
     public String password;
+    public int Status;
+
 }

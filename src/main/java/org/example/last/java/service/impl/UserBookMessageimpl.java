@@ -33,6 +33,7 @@ public class UserBookMessageimpl implements org.example.last.java.service.UserBo
     }
     @Override
     public void deleteDataMessage(MessageDto messageDto){
-            userBookMessageMapper.deleteMessage(messageDto);
+
+        userBookMessageMapper.deleteMessage(messageDto);
     }
 }

@@ -3,6 +3,7 @@ package org.example.last.java.mapper;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
+import org.example.last.java.entity.MessageDto;
 import org.example.last.java.entity.SportDto;
 
 import java.util.List;
@@ -170,6 +171,7 @@ public interface SportMapper {
     int AdminUpdateSportppq1(int id);
     @Update("update ppq set status=0 where id=#{id}")
     int AdminUpdateSportppq2(int id);
+
 
 }
 

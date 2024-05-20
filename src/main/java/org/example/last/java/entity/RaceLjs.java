@@ -15,4 +15,5 @@ public  class RaceLjs {
     public String RaceName;
     public int Number;
     public int Total;
+
 }
